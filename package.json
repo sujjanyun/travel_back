@@ -1,0 +1,25 @@
+{
+  "name": "travel_back",
+  "version": "1.0.0",
+  "description": "backend of travel app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:create": "createdb travel_data",
+    "db:destroy": "dropdb travel_data",
+    "db:init": "psql -f schema.sql travel_data",
+    "db:seed": "psql -f seed.sql travel_data",
+    "db:reset": "npm run db:destroy; npm run db:create && npm run db:init && npm run db:seed",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^15.10.0",
+    "nodemon": "^2.0.7",
+    "pg-promise": "^10.9.5"
+  }
+}
