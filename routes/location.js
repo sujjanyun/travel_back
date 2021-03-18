@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const { location } = req.body;
-    const response = await locationModel.addNewLocation(title, body);
+    console.log('reqBody: ', req.body)
+    const response = await locationModel.addNewLocation(location);
     if (response.rowCount >= 1) {
         res.sendStatus(200);
     } else {

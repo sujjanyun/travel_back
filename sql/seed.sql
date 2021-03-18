@@ -1,3 +1,3 @@
-INSERT INTO locations (city, country)
-    VALUES ('Paris', 'France'),
-    ('London', 'England');
+INSERT INTO location (location)
+    VALUES ('Paris, France'),
+    ('London, England');

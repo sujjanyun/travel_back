@@ -2,11 +2,10 @@
 
 const db = require('./conn');
 
-class locationsModel {
-    constructor(id, city, country) {
+class locationModel {
+    constructor(id, location) {
         this.id = id;
-        this.city = city;
-        this.country = country;
+        this.location = location;
     }
 
     static async getAll() {
@@ -14,10 +13,10 @@ class locationsModel {
         return response;
     }
 
-    static async addNewLocation(city, country) {
-        const response = await db.result(`INSERT INTO location (city, country) VALUES ($1, $2)`, [city, country]);
+    static async addNewLocation(location) {
+        const response = await db.result(`INSERT INTO location (location) VALUES ($1)`, [location]);
         return response;
     }
 }
 
-module.exports = locationsModel;
+module.exports = locationModel;
