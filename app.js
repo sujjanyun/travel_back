@@ -19,8 +19,10 @@ SERVER.listen(PORT, HOSTNAME, () => {
     console.log(`Server is running on http://${HOSTNAME}:${PORT}`);
 });
 
-const rootController = require("./routes/index"),
-    locationController = require("./routes/location");
+const rootController = require("./routes/index");
+const locationController = require("./routes/location");
+const activityController = require("./routes/activity");
 
 app.use("/", rootController);
 app.use("/location", locationController);
+app.use("/activity", activityController);

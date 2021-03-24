@@ -3,9 +3,10 @@
 const db = require('./conn');
 
 class locationModel {
-    constructor(id, location) {
+    constructor(id, location, slug) {
         this.id = id;
         this.location = location;
+        this.slug = slug;
     }
 
     static async getAll() {
@@ -13,8 +14,18 @@ class locationModel {
         return response;
     }
 
-    static async addNewLocation(location) {
-        const response = await db.result(`INSERT INTO location (location) VALUES ($1)`, [location]);
+    static async getBySlug(slug) {
+        const response = await db.one(`SELECT * FROM location WHERE slug = '${slug}';`);
+        return response;
+    }
+
+    static async addNewLocation(location, slug) {
+        const response = await db.result(`INSERT INTO location (location, slug) VALUES ($1, $2)`, [location, slug]);
+        return response;
+    }
+
+    static async deleteLocation() {
+        const response = await db.result(`DELETE * FROM location WHERE slug = '${slug}';`);
         return response;
     }
 }
